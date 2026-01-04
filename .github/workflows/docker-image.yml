@@ -13,11 +13,10 @@ permissions:
 env:
   NIX_CONFIG: |
     experimental-features = nix-command flakes
-    extra-platforms = aarch64-linux
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04-arm64
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -45,7 +44,7 @@ jobs:
         run: |
           set -euo pipefail
           . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
-          nix build .#packages.aarch64-linux.clawdbot-docker
+          nix build .#clawdbot-docker
 
       - name: Load image
         shell: bash
