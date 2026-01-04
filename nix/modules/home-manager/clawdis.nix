@@ -762,6 +762,14 @@ in {
       default = {};
       description = "Named Clawdis instances (prod/test).";
     };
+
+    reloadScript = {
+      enable = lib.mkOption {
+        type = lib.types.bool;
+        default = false;
+        description = "Install clawdis-reload helper for no-sudo config refresh + gateway restart.";
+      };
+    };
   };
 
   config = lib.mkIf (cfg.enable || cfg.instances != {}) {
@@ -786,7 +794,13 @@ in {
       // (lib.listToAttrs appInstalls)
       // documentsFiles
       // pluginSkillsFiles
-      // pluginConfigFiles;
+      // pluginConfigFiles
+      // (lib.optionalAttrs cfg.reloadScript.enable {
+        ".local/bin/clawdis-reload" = {
+          executable = true;
+          source = ./clawdis-reload.sh;
+        };
+      });
 
     home.activation.clawdisDocumentGuard = lib.mkIf documentsEnabled (
       lib.hm.dag.entryBefore [ "writeBoundary" ] ''
