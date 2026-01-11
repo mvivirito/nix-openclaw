@@ -967,6 +967,16 @@ in
         };
       }; };
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
+      };
       enabled = lib.mkOption {
         type = t.bool;
       };
@@ -1136,6 +1146,16 @@ in
         type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
       };
     }; };
+    };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     enabled = lib.mkOption {
       type = t.bool;
@@ -1526,8 +1546,18 @@ in
       dbPath = lib.mkOption {
         type = t.str;
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
       dmPolicy = lib.mkOption {
         type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
       };
       enabled = lib.mkOption {
         type = t.bool;
@@ -1596,8 +1626,18 @@ in
     dbPath = lib.mkOption {
       type = t.str;
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
     dmPolicy = lib.mkOption {
       type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     enabled = lib.mkOption {
       type = t.bool;
@@ -1850,8 +1890,18 @@ in
     capabilities = lib.mkOption {
       type = t.listOf (t.str);
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
     dmPolicy = lib.mkOption {
       type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     enabled = lib.mkOption {
       type = t.bool;
@@ -2039,8 +2089,18 @@ in
       cliPath = lib.mkOption {
         type = t.str;
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
       dmPolicy = lib.mkOption {
         type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
       };
       enabled = lib.mkOption {
         type = t.bool;
@@ -2120,8 +2180,18 @@ in
     cliPath = lib.mkOption {
       type = t.str;
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
     dmPolicy = lib.mkOption {
       type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     enabled = lib.mkOption {
       type = t.bool;
@@ -2316,6 +2386,16 @@ in
         };
       }; };
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
+      };
       enabled = lib.mkOption {
         type = t.bool;
       };
@@ -2461,6 +2541,16 @@ in
       };
     }; };
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
+    };
     enabled = lib.mkOption {
       type = t.bool;
     };
@@ -2566,8 +2656,18 @@ in
       capabilities = lib.mkOption {
         type = t.listOf (t.str);
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
       dmPolicy = lib.mkOption {
         type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
       };
       draftChunk = lib.mkOption {
         type = t.submodule { options = {
@@ -2712,8 +2812,18 @@ in
     capabilities = lib.mkOption {
       type = t.listOf (t.str);
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
     dmPolicy = lib.mkOption {
       type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     draftChunk = lib.mkOption {
       type = t.submodule { options = {
@@ -2993,8 +3103,18 @@ in
       capabilities = lib.mkOption {
         type = t.listOf (t.str);
       };
+      dmHistoryLimit = lib.mkOption {
+        type = t.int;
+      };
       dmPolicy = lib.mkOption {
         type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+      };
+      dms = lib.mkOption {
+        type = t.attrsOf (t.submodule { options = {
+        historyLimit = lib.mkOption {
+          type = t.int;
+        };
+      }; });
       };
       enabled = lib.mkOption {
         type = t.bool;
@@ -3080,8 +3200,18 @@ in
     capabilities = lib.mkOption {
       type = t.listOf (t.str);
     };
+    dmHistoryLimit = lib.mkOption {
+      type = t.int;
+    };
     dmPolicy = lib.mkOption {
       type = t.enum [ "pairing" "allowlist" "open" "disabled" ];
+    };
+    dms = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      historyLimit = lib.mkOption {
+        type = t.int;
+      };
+    }; });
     };
     groupAllowFrom = lib.mkOption {
       type = t.listOf (t.str);
