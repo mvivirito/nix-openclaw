@@ -43,11 +43,11 @@
         "nixpkgs": "nixpkgs"
       },
       "locked": {
-        "lastModified": 1768394469,
-        "narHash": "sha256-ybLIzBGUX2OQ5yp/Cb23RBAUWQnZrCFnjFE1edvYJPc=",
+        "lastModified": 1768396331,
+        "narHash": "sha256-RQON/b/486Q22hbDxgXKoEiaNIwGLYcswk6jJDwQT3A=",
         "owner": "clawdbot",
         "repo": "nix-steipete-tools",
-        "rev": "31ad910d15ba0248626854c1ca63aa3295ee54c7",
+        "rev": "d3f375270f613176d630f6171aeaf3d9efecd715",
         "type": "github"
       },
       "original": {
