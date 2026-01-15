@@ -409,6 +409,9 @@ in
           apparmorProfile = lib.mkOption {
             type = t.str;
           };
+          binds = lib.mkOption {
+            type = t.listOf (t.str);
+          };
           capDrop = lib.mkOption {
             type = t.listOf (t.str);
           };
@@ -749,6 +752,9 @@ in
           apparmorProfile = lib.mkOption {
             type = t.str;
           };
+          binds = lib.mkOption {
+            type = t.listOf (t.str);
+          };
           capDrop = lib.mkOption {
             type = t.listOf (t.str);
           };
@@ -863,6 +869,19 @@ in
         type = t.submodule { options = {
         allow = lib.mkOption {
           type = t.listOf (t.str);
+        };
+        byProvider = lib.mkOption {
+          type = t.attrsOf (t.submodule { options = {
+          allow = lib.mkOption {
+            type = t.listOf (t.str);
+          };
+          deny = lib.mkOption {
+            type = t.listOf (t.str);
+          };
+          profile = lib.mkOption {
+            type = t.oneOf [ t.enum [ "minimal" ] t.enum [ "coding" ] t.enum [ "messaging" ] t.enum [ "full" ] ];
+          };
+        }; });
         };
         deny = lib.mkOption {
           type = t.listOf (t.str);
@@ -1023,6 +1042,9 @@ in
     color = lib.mkOption {
       type = t.str;
     };
+    controlToken = lib.mkOption {
+      type = t.str;
+    };
     controlUrl = lib.mkOption {
       type = t.str;
     };
@@ -1051,6 +1073,9 @@ in
       };
       color = lib.mkOption {
         type = t.str;
+      };
+      driver = lib.mkOption {
+        type = t.oneOf [ t.enum [ "clawd" ] t.enum [ "extension" ] ];
       };
     }; });
     };
@@ -2090,6 +2115,9 @@ in
         replyToMode = lib.mkOption {
           type = t.oneOf [ t.enum [ "off" ] t.enum [ "first" ] t.enum [ "all" ] ];
         };
+        requireMention = lib.mkOption {
+          type = t.bool;
+        };
         slashCommand = lib.mkOption {
           type = t.submodule { options = {
           enabled = lib.mkOption {
@@ -2254,6 +2282,9 @@ in
       };
       replyToMode = lib.mkOption {
         type = t.oneOf [ t.enum [ "off" ] t.enum [ "first" ] t.enum [ "all" ] ];
+      };
+      requireMention = lib.mkOption {
+        type = t.bool;
       };
       slashCommand = lib.mkOption {
         type = t.submodule { options = {
@@ -3506,6 +3537,19 @@ in
       };
     }; };
     };
+    byProvider = lib.mkOption {
+      type = t.attrsOf (t.submodule { options = {
+      allow = lib.mkOption {
+        type = t.listOf (t.str);
+      };
+      deny = lib.mkOption {
+        type = t.listOf (t.str);
+      };
+      profile = lib.mkOption {
+        type = t.oneOf [ t.enum [ "minimal" ] t.enum [ "coding" ] t.enum [ "messaging" ] t.enum [ "full" ] ];
+      };
+    }; });
+    };
     deny = lib.mkOption {
       type = t.listOf (t.str);
     };
@@ -3568,6 +3612,51 @@ in
         };
         deny = lib.mkOption {
           type = t.listOf (t.str);
+        };
+      }; };
+      };
+    }; };
+    };
+    web = lib.mkOption {
+      type = t.submodule { options = {
+      fetch = lib.mkOption {
+        type = t.submodule { options = {
+        cacheTtlMinutes = lib.mkOption {
+          type = t.number;
+        };
+        enabled = lib.mkOption {
+          type = t.bool;
+        };
+        maxChars = lib.mkOption {
+          type = t.int;
+        };
+        timeoutSeconds = lib.mkOption {
+          type = t.int;
+        };
+        userAgent = lib.mkOption {
+          type = t.str;
+        };
+      }; };
+      };
+      search = lib.mkOption {
+        type = t.submodule { options = {
+        apiKey = lib.mkOption {
+          type = t.str;
+        };
+        cacheTtlMinutes = lib.mkOption {
+          type = t.number;
+        };
+        enabled = lib.mkOption {
+          type = t.bool;
+        };
+        maxResults = lib.mkOption {
+          type = t.int;
+        };
+        provider = lib.mkOption {
+          type = t.oneOf [ t.enum [ "brave" ] ];
+        };
+        timeoutSeconds = lib.mkOption {
+          type = t.int;
         };
       }; };
       };
