@@ -2738,6 +2738,9 @@ in
         selfChatMode = lib.mkOption {
           type = t.bool;
         };
+        sendReadReceipts = lib.mkOption {
+          type = t.bool;
+        };
         textChunkLimit = lib.mkOption {
           type = t.int;
         };
@@ -2830,6 +2833,9 @@ in
         type = t.str;
       };
       selfChatMode = lib.mkOption {
+        type = t.bool;
+      };
+      sendReadReceipts = lib.mkOption {
         type = t.bool;
       };
       textChunkLimit = lib.mkOption {
