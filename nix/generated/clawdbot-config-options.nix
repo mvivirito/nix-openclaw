@@ -572,6 +572,31 @@ in
         };
       }; };
       };
+      heartbeat = lib.mkOption {
+        type = t.submodule { options = {
+        ackMaxChars = lib.mkOption {
+          type = t.int;
+        };
+        every = lib.mkOption {
+          type = t.str;
+        };
+        includeReasoning = lib.mkOption {
+          type = t.bool;
+        };
+        model = lib.mkOption {
+          type = t.str;
+        };
+        prompt = lib.mkOption {
+          type = t.str;
+        };
+        target = lib.mkOption {
+          type = t.oneOf [ t.enum [ "last" ] t.enum [ "whatsapp" ] t.enum [ "telegram" ] t.enum [ "discord" ] t.enum [ "slack" ] t.enum [ "msteams" ] t.enum [ "signal" ] t.enum [ "imessage" ] t.enum [ "none" ] ];
+        };
+        to = lib.mkOption {
+          type = t.str;
+        };
+      }; };
+      };
       humanDelay = lib.mkOption {
         type = t.submodule { options = {
         maxMs = lib.mkOption {
@@ -2150,6 +2175,12 @@ in
           };
         }; };
         };
+        userToken = lib.mkOption {
+          type = t.str;
+        };
+        userTokenReadOnly = lib.mkOption {
+          type = t.bool;
+        };
       }; });
       };
       actions = lib.mkOption {
@@ -2327,6 +2358,12 @@ in
           type = t.bool;
         };
       }; };
+      };
+      userToken = lib.mkOption {
+        type = t.str;
+      };
+      userTokenReadOnly = lib.mkOption {
+        type = t.bool;
       };
     }; };
     };
