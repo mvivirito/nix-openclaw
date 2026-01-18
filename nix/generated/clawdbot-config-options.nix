@@ -194,6 +194,15 @@ in
       elevatedDefault = lib.mkOption {
         type = t.oneOf [ t.enum [ "off" ] t.enum [ "on" ] ];
       };
+      envelopeElapsed = lib.mkOption {
+        type = t.oneOf [ t.enum [ "on" ] t.enum [ "off" ] ];
+      };
+      envelopeTimestamp = lib.mkOption {
+        type = t.oneOf [ t.enum [ "on" ] t.enum [ "off" ] ];
+      };
+      envelopeTimezone = lib.mkOption {
+        type = t.str;
+      };
       heartbeat = lib.mkOption {
         type = t.submodule { options = {
         ackMaxChars = lib.mkOption {
@@ -3694,6 +3703,17 @@ in
       type = t.bool;
     };
     responsePrefix = lib.mkOption {
+      type = t.str;
+    };
+  }; };
+  };
+
+  meta = lib.mkOption {
+    type = t.submodule { options = {
+    lastTouchedAt = lib.mkOption {
+      type = t.str;
+    };
+    lastTouchedVersion = lib.mkOption {
       type = t.str;
     };
   }; };
