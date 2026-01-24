@@ -4665,11 +4665,42 @@ in
         apiKey = lib.mkOption {
           type = t.str;
         };
+        applyTextNormalization = lib.mkOption {
+          type = t.enum [ "auto" "on" "off" ];
+        };
+        baseUrl = lib.mkOption {
+          type = t.str;
+        };
+        languageCode = lib.mkOption {
+          type = t.str;
+        };
         modelId = lib.mkOption {
           type = t.str;
         };
+        seed = lib.mkOption {
+          type = t.int;
+        };
         voiceId = lib.mkOption {
           type = t.str;
+        };
+        voiceSettings = lib.mkOption {
+          type = t.submodule { options = {
+          similarityBoost = lib.mkOption {
+            type = t.number;
+          };
+          speed = lib.mkOption {
+            type = t.number;
+          };
+          stability = lib.mkOption {
+            type = t.number;
+          };
+          style = lib.mkOption {
+            type = t.number;
+          };
+          useSpeakerBoost = lib.mkOption {
+            type = t.bool;
+          };
+        }; };
         };
       }; };
       };
@@ -4681,6 +4712,34 @@ in
       };
       mode = lib.mkOption {
         type = t.enum [ "final" "all" ];
+      };
+      modelOverrides = lib.mkOption {
+        type = t.submodule { options = {
+        allowModelId = lib.mkOption {
+          type = t.bool;
+        };
+        allowNormalization = lib.mkOption {
+          type = t.bool;
+        };
+        allowProvider = lib.mkOption {
+          type = t.bool;
+        };
+        allowSeed = lib.mkOption {
+          type = t.bool;
+        };
+        allowText = lib.mkOption {
+          type = t.bool;
+        };
+        allowVoice = lib.mkOption {
+          type = t.bool;
+        };
+        allowVoiceSettings = lib.mkOption {
+          type = t.bool;
+        };
+        enabled = lib.mkOption {
+          type = t.bool;
+        };
+      }; };
       };
       openai = lib.mkOption {
         type = t.submodule { options = {
@@ -4700,6 +4759,9 @@ in
       };
       provider = lib.mkOption {
         type = t.enum [ "elevenlabs" "openai" ];
+      };
+      summaryModel = lib.mkOption {
+        type = t.str;
       };
       timeoutMs = lib.mkOption {
         type = t.int;
