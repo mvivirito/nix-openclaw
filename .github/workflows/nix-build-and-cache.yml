@@ -1,12 +1,12 @@
 name: Nix Build & Cache
 
 on:
-  pull_request:
   push:
     branches: [ main ]
   workflow_run:
     workflows: [ "Yolo Update Pins" ]
     types: [ completed ]
+  workflow_dispatch: {}
 
 jobs:
   build-and-cache-linux:
