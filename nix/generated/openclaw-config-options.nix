@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 88caa4b50c7bc339c425e4975dd89ef967905802. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 99caaef6ccb8e01faaac84c72e0e3ccd8fcf055f. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -2344,6 +2344,10 @@ in
       type = t.nullOr (t.submodule { options = {
       accounts = lib.mkOption {
         type = t.nullOr (t.attrsOf (t.submodule { options = {
+        ackReaction = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
         actions = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           channelInfo = lib.mkOption {
@@ -2817,7 +2821,25 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        ui = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          components = lib.mkOption {
+            type = t.nullOr (t.submodule { options = {
+            accentColor = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+          }; });
+            default = null;
+          };
+        }; });
+          default = null;
+        };
       }; }));
+        default = null;
+      };
+      ackReaction = lib.mkOption {
+        type = t.nullOr (t.str);
         default = null;
       };
       actions = lib.mkOption {
@@ -3291,6 +3313,20 @@ in
       };
       token = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+      ui = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        components = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          accentColor = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
+      }; });
         default = null;
       };
     }; });
@@ -5130,6 +5166,10 @@ in
       type = t.nullOr (t.submodule { options = {
       accounts = lib.mkOption {
         type = t.nullOr (t.attrsOf (t.submodule { options = {
+        ackReaction = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
         actions = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           channelInfo = lib.mkOption {
@@ -5488,6 +5528,10 @@ in
           default = null;
         };
       }; }));
+        default = null;
+      };
+      ackReaction = lib.mkOption {
+        type = t.nullOr (t.str);
         default = null;
       };
       actions = lib.mkOption {
@@ -5854,6 +5898,10 @@ in
       type = t.nullOr (t.submodule { options = {
       accounts = lib.mkOption {
         type = t.nullOr (t.attrsOf (t.submodule { options = {
+        ackReaction = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
         actions = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           deleteMessage = lib.mkOption {
@@ -6208,6 +6256,10 @@ in
           default = null;
         };
       }; }));
+        default = null;
+      };
+      ackReaction = lib.mkOption {
+        type = t.nullOr (t.str);
         default = null;
       };
       actions = lib.mkOption {
