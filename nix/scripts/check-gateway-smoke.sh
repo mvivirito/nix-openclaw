@@ -6,6 +6,8 @@ if [ -z "${OPENCLAW_GATEWAY:-}" ]; then
   exit 1
 fi
 
-export HOME="$(mktemp -d)"
+tmp_home="$(mktemp -d)"
+export HOME="$tmp_home"
+trap 'rm -rf "$tmp_home"' EXIT
 
 "$OPENCLAW_GATEWAY/bin/openclaw" --help >/dev/null

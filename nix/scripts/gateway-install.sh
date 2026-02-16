@@ -24,12 +24,15 @@ check_no_broken_symlinks() {
   fi
 
   broken_tmp="$(mktemp)"
-  find "$root" -type l ! -exec test -e {} \; -print > "$broken_tmp"
+  # Portable and faster than `find ... -exec test -e {} \;` on large trees.
+  find "$root" -type l -print | while IFS= read -r link; do
+    [ -e "$link" ] || printf '%s\n' "$link"
+  done > "$broken_tmp"
   if [ -s "$broken_tmp" ]; then
     echo "dangling symlinks found under $root" >&2
     cat "$broken_tmp" >&2
     rm -f "$broken_tmp"
-    exit 1
+    return 1
   fi
   rm -f "$broken_tmp"
 }
