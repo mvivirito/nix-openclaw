@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 043b2f5e7a0061c319d4ab52645a7bc48d268bc2. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev e741a53919143704992cc4ade1cfc5ba395f63fa. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -2035,6 +2035,23 @@ in
     }; });
       default = null;
     };
+    ssrfPolicy = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      allowPrivateNetwork = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      allowedHostnames = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+      hostnameAllowlist = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+    }; });
+      default = null;
+    };
   }; });
     default = null;
   };
@@ -3866,6 +3883,10 @@ in
           type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
           default = null;
         };
+        attachmentRoots = lib.mkOption {
+          type = t.nullOr (t.listOf (t.str));
+          default = null;
+        };
         blockStreaming = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
@@ -4025,6 +4046,10 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        remoteAttachmentRoots = lib.mkOption {
+          type = t.nullOr (t.listOf (t.str));
+          default = null;
+        };
         remoteHost = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -4046,6 +4071,10 @@ in
       };
       allowFrom = lib.mkOption {
         type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
+        default = null;
+      };
+      attachmentRoots = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
         default = null;
       };
       blockStreaming = lib.mkOption {
@@ -4205,6 +4234,10 @@ in
       };
       region = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+      remoteAttachmentRoots = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
         default = null;
       };
       remoteHost = lib.mkOption {
@@ -7914,6 +7947,30 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        integrity = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        resolvedAt = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        resolvedName = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        resolvedSpec = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        resolvedVersion = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        shasum = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
         source = lib.mkOption {
           type = t.oneOf [ (t.enum [ "npm" ]) (t.enum [ "archive" ]) (t.enum [ "path" ]) ];
         };
@@ -8819,6 +8876,30 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      integrity = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      resolvedAt = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      resolvedName = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      resolvedSpec = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      resolvedVersion = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      shasum = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
       source = lib.mkOption {
         type = t.oneOf [ (t.enum [ "npm" ]) (t.enum [ "archive" ]) (t.enum [ "path" ]) ];
       };
@@ -8841,15 +8922,6 @@ in
       type = t.nullOr (t.submodule { options = {
       paths = lib.mkOption {
         type = t.nullOr (t.listOf (t.str));
-        default = null;
-      };
-    }; });
-      default = null;
-    };
-    runtime = lib.mkOption {
-      type = t.nullOr (t.submodule { options = {
-      allowLegacyExec = lib.mkOption {
-        type = t.nullOr (t.bool);
         default = null;
       };
     }; });
