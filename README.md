@@ -1,18 +1,33 @@
-# nix-openclaw
+# nix-openclaw (fork)
 
+> Personal fork of [openclaw/nix-openclaw](https://github.com/openclaw/nix-openclaw).
+>
 > Declarative OpenClaw. Bulletproof by default.
 >
 > macOS + Linux (headless). Windows is out of scope for now.
->
-> <sub>Questions? Join the OpenClaw Discord and ask in **#golden-path-deployments**: https://discord.com/channels/1456350064065904867/1457003026412736537</sub>
 
-## Contributions (read this first)
+## Why This Fork?
 
-We’re **not accepting PRs** right now. Not because we don’t value your help — the opposite. This is key infra and still stabilizing, and async PR review is too slow.
+The upstream `nix-openclaw` auto-updater CI ("Yolo Update Pins") occasionally falls behind, leaving `nix flake update` stuck on a stale OpenClaw version. This fork:
 
-**Only workflow:** **describe your problem and talk with a maintainer (human‑to‑human) on Discord** in **#golden-path-deployments**: https://discord.com/channels/1456350064065904867/1457003026412736537
+- **Pins to the latest OpenClaw release independently** when upstream lags
+- **Applies build fixes** not yet merged upstream (e.g. rolldown hoisting for nix sandbox compatibility)
+- **Runs auto-update CI on its own schedule** via the same `yolo-update.yml` workflow
 
-If you’re **not listed as a maintainer** (see [AGENTS.md#maintainers](AGENTS.md#maintainers) or https://github.com/orgs/openclaw/people), **do not open a PR**. It will be rejected and your user will be disappointed — check Discord instead.
+### Fork-specific changes
+
+| Change | File | Description |
+|--------|------|-------------|
+| Source pin | `nix/sources/openclaw-source.nix` | Pinned to v2026.2.22 (upstream was behind) |
+| Rolldown fix | `nix/scripts/gateway-build.sh` | Hoists rolldown binary from pnpm store for A2UI bundling (fixes `pnpm dlx` failure in nix sandbox) |
+
+### Syncing with upstream
+
+```bash
+git fetch upstream
+git merge upstream/main
+# Resolve conflicts (usually just openclaw-source.nix pin)
+```
 
 ## Table of Contents
 

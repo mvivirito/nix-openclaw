@@ -72,6 +72,15 @@ fi
 
 log_step "patchShebangs node_modules/.bin" bash -e -c ". \"$STDENV_SETUP\"; patchShebangs node_modules/.bin"
 
+# Hoist rolldown binary for A2UI bundling (pnpm dlx is blocked in nix sandbox).
+# rolldown is a transitive dep (via tsdown) so it exists in .pnpm but isn't in node_modules/.bin.
+rolldown_js="$(find node_modules/.pnpm -name cli.mjs -path '*/rolldown/bin/cli.mjs' -print -quit 2>/dev/null || true)"
+if [ -n "$rolldown_js" ] && [ ! -e node_modules/.bin/rolldown ]; then
+  abs_rolldown="$(readlink -f "$rolldown_js")"
+  printf '#!/bin/sh\nexec node "%s" "$@"\n' "$abs_rolldown" > node_modules/.bin/rolldown
+  chmod +x node_modules/.bin/rolldown
+fi
+
 # Break down `pnpm build` (upstream package.json) so we can profile it.
 log_step "build: canvas:a2ui:bundle" pnpm canvas:a2ui:bundle
 log_step "build: tsdown" pnpm exec tsdown
