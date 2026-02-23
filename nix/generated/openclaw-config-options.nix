@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev db32677f1dfe8d85ed96ac8387996327ccec6d94. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev c92c3ad2240a8e6301740b9df76e622c7d263e63. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -426,7 +426,7 @@ in
         default = null;
       };
       imageModel = lib.mkOption {
-        type = t.nullOr (t.submodule { options = {
+        type = t.nullOr (t.oneOf [ (t.str) (t.submodule { options = {
         fallbacks = lib.mkOption {
           type = t.nullOr (t.listOf (t.str));
           default = null;
@@ -435,7 +435,7 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
-      }; });
+      }; }) ]);
         default = null;
       };
       maxConcurrent = lib.mkOption {
@@ -690,7 +690,7 @@ in
         default = null;
       };
       model = lib.mkOption {
-        type = t.nullOr (t.submodule { options = {
+        type = t.nullOr (t.oneOf [ (t.str) (t.submodule { options = {
         fallbacks = lib.mkOption {
           type = t.nullOr (t.listOf (t.str));
           default = null;
@@ -699,7 +699,7 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
-      }; });
+      }; }) ]);
         default = null;
       };
       models = lib.mkOption {
