@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev b9f01e8d3fa396c66ce8d9e5e722227257b40555. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 0cc46d774caaa658299a479439034cbecdad6375. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -7995,6 +7995,19 @@ in
       type = t.nullOr (t.int);
       default = null;
     };
+    runLog = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      keepLines = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      maxBytes = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.str) (t.number) ]);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
     sessionRetention = lib.mkOption {
       type = t.nullOr (t.oneOf [ (t.str) (t.enum [ false ]) ]);
       default = null;
@@ -9785,6 +9798,14 @@ in
     };
     maintenance = lib.mkOption {
       type = t.nullOr (t.submodule { options = {
+      highWaterBytes = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.str) (t.number) ]);
+        default = null;
+      };
+      maxDiskBytes = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.str) (t.number) ]);
+        default = null;
+      };
       maxEntries = lib.mkOption {
         type = t.nullOr (t.int);
         default = null;
@@ -9799,6 +9820,10 @@ in
       };
       pruneDays = lib.mkOption {
         type = t.nullOr (t.int);
+        default = null;
+      };
+      resetArchiveRetention = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.str) (t.number) (t.enum [ false ]) ]);
         default = null;
       };
       rotateBytes = lib.mkOption {
