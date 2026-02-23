@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 420c18364e3f9e6834ec35462ef3f6c6ceddd85a. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 75423a00d610c218da73f5ec2924e8da55875a9b. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -8358,6 +8358,15 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+      }; });
+        default = null;
+      };
+      securityHeaders = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        strictTransportSecurity = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.str) (t.enum [ false ]) ]);
           default = null;
         };
       }; });
