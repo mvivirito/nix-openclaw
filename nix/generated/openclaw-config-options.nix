@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev fbdb1b3e733ff6350079c1220ce96d48e31e2ad6. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 8e821a061cb61c8cd3e3f2a90880ff73099126c1. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -11221,6 +11221,19 @@ in
           type = t.nullOr (t.bool);
           default = null;
         };
+        gemini = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          apiKey = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          model = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         grok = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           apiKey = lib.mkOption {
@@ -11260,7 +11273,7 @@ in
           default = null;
         };
         provider = lib.mkOption {
-          type = t.nullOr (t.oneOf [ (t.enum [ "brave" ]) (t.enum [ "perplexity" ]) (t.enum [ "grok" ]) ]);
+          type = t.nullOr (t.oneOf [ (t.enum [ "brave" ]) (t.enum [ "perplexity" ]) (t.enum [ "grok" ]) (t.enum [ "gemini" ]) ]);
           default = null;
         };
         timeoutSeconds = lib.mkOption {
