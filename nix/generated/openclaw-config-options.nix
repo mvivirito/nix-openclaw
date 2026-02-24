@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev f52a0228ca059ece8a674d42b1c5bff210498895. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 403239057291db687734b43882ba2f3c83e92274. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -808,6 +808,14 @@ in
             type = t.nullOr (t.number);
             default = null;
           };
+          dangerouslyAllowExternalBindSources = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          dangerouslyAllowReservedContainerTargets = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           dns = lib.mkOption {
             type = t.nullOr (t.listOf (t.str));
             default = null;
@@ -1474,6 +1482,14 @@ in
             type = t.nullOr (t.number);
             default = null;
           };
+          dangerouslyAllowExternalBindSources = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          dangerouslyAllowReservedContainerTargets = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           dns = lib.mkOption {
             type = t.nullOr (t.listOf (t.str));
             default = null;
@@ -2102,6 +2118,10 @@ in
         type = t.nullOr (t.listOf (t.str));
         default = null;
       };
+      dangerouslyAllowPrivateNetwork = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
       hostnameAllowlist = lib.mkOption {
         type = t.nullOr (t.listOf (t.str));
         default = null;
@@ -2724,6 +2744,10 @@ in
           default = null;
         };
         configWrites = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        dangerouslyAllowNameMatching = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
         };
@@ -3490,6 +3514,10 @@ in
         type = t.nullOr (t.bool);
         default = null;
       };
+      dangerouslyAllowNameMatching = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
       defaultTo = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
@@ -4164,6 +4192,10 @@ in
           type = t.nullOr (t.bool);
           default = null;
         };
+        dangerouslyAllowNameMatching = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
         defaultTo = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -4345,6 +4377,10 @@ in
         default = null;
       };
       configWrites = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      dangerouslyAllowNameMatching = lib.mkOption {
         type = t.nullOr (t.bool);
         default = null;
       };
@@ -5415,6 +5451,10 @@ in
         type = t.nullOr (t.bool);
         default = null;
       };
+      dangerouslyAllowNameMatching = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
       defaultTo = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
@@ -6170,6 +6210,10 @@ in
           type = t.nullOr (t.bool);
           default = null;
         };
+        dangerouslyAllowNameMatching = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
         defaultTo = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -6547,6 +6591,10 @@ in
         default = null;
       };
       configWrites = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      dangerouslyAllowNameMatching = lib.mkOption {
         type = t.nullOr (t.bool);
         default = null;
       };
@@ -8243,6 +8291,10 @@ in
       };
       basePath = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+      dangerouslyAllowHostHeaderOriginFallback = lib.mkOption {
+        type = t.nullOr (t.bool);
         default = null;
       };
       dangerouslyDisableDeviceAuth = lib.mkOption {
