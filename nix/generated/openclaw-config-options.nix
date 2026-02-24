@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev dd9ba974d0353adb5d35722d936a35724f0bb5a5. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 4ec0af00fef1e7351dbe982cf9e29ce76f28099f. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -10177,6 +10177,35 @@ in
     };
     outputFormat = lib.mkOption {
       type = t.nullOr (t.str);
+      default = null;
+    };
+    provider = lib.mkOption {
+      type = t.nullOr (t.str);
+      default = null;
+    };
+    providers = lib.mkOption {
+      type = t.nullOr (t.attrsOf (t.submodule { options = {
+      apiKey = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      modelId = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      outputFormat = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      voiceAliases = lib.mkOption {
+        type = t.nullOr (t.attrsOf (t.str));
+        default = null;
+      };
+      voiceId = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+    }; }));
       default = null;
     };
     voiceAliases = lib.mkOption {
