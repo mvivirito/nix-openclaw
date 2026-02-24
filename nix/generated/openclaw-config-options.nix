@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 30cb849b10608cc02ad748b36a6ed5deff08d5fb. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 79e2328935aa1b6259702c4769dac1f18596e2fb. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -808,6 +808,10 @@ in
             type = t.nullOr (t.number);
             default = null;
           };
+          dangerouslyAllowContainerNamespaceJoin = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           dangerouslyAllowExternalBindSources = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -1484,6 +1488,10 @@ in
           };
           cpus = lib.mkOption {
             type = t.nullOr (t.number);
+            default = null;
+          };
+          dangerouslyAllowContainerNamespaceJoin = lib.mkOption {
+            type = t.nullOr (t.bool);
             default = null;
           };
           dangerouslyAllowExternalBindSources = lib.mkOption {
