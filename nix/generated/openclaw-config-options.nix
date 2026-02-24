@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev aceb17a30e6cf94eaa49f4de9389fe316df25b4b. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev dd9ba974d0353adb5d35722d936a35724f0bb5a5. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -9527,7 +9527,7 @@ in
   meta = lib.mkOption {
     type = t.nullOr (t.submodule { options = {
     lastTouchedAt = lib.mkOption {
-      type = t.nullOr (t.str);
+      type = t.nullOr (t.oneOf [ (t.str) (t.anything) ]);
       default = null;
     };
     lastTouchedVersion = lib.mkOption {
