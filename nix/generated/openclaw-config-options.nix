@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 403239057291db687734b43882ba2f3c83e92274. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 91ea6ad8ec2e701d10c2c94684238ba2699a0769. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -967,6 +967,10 @@ in
             default = null;
           };
         }; }) ]);
+          default = null;
+        };
+        runTimeoutSeconds = lib.mkOption {
+          type = t.nullOr (t.int);
           default = null;
         };
         thinking = lib.mkOption {
@@ -7861,6 +7865,10 @@ in
           default = null;
         };
       }; }));
+        default = null;
+      };
+      enabled = lib.mkOption {
+        type = t.nullOr (t.bool);
         default = null;
       };
       groupAllowFrom = lib.mkOption {
