@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 79e2328935aa1b6259702c4769dac1f18596e2fb. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev f7de41ca20d7de34f0aa0e410ac58c8b344a981e. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -3171,6 +3171,14 @@ in
           }; }));
             default = null;
           };
+          daveEncryption = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          decryptionFailureTolerance = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
           enabled = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -3936,6 +3944,14 @@ in
             type = t.str;
           };
         }; }));
+          default = null;
+        };
+        daveEncryption = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        decryptionFailureTolerance = lib.mkOption {
+          type = t.nullOr (t.int);
           default = null;
         };
         enabled = lib.mkOption {
