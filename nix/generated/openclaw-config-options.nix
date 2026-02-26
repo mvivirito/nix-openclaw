@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 8483e01a68ec47b18a545d36611e14ed379bf159. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev d33db186d07a6b4f38b373674a54b8006d4ed889. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -389,6 +389,15 @@ in
       };
       elevatedDefault = lib.mkOption {
         type = t.nullOr (t.oneOf [ (t.enum [ "off" ]) (t.enum [ "on" ]) (t.enum [ "ask" ]) (t.enum [ "full" ]) ]);
+        default = null;
+      };
+      embeddedPi = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        projectSettingsPolicy = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.enum [ "trusted" ]) (t.enum [ "sanitize" ]) (t.enum [ "ignore" ]) ]);
+          default = null;
+        };
+      }; });
         default = null;
       };
       envelopeElapsed = lib.mkOption {
