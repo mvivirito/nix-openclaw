@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 45d59971e66f38651f2f72a6818deb854b1eb85f. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 410ba918fb7b60b9a777b20589d9494683ae9456. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -9915,6 +9915,10 @@ in
         default = null;
       };
     }; });
+      default = null;
+    };
+    parentForkMaxTokens = lib.mkOption {
+      type = t.nullOr (t.int);
       default = null;
     };
     reset = lib.mkOption {
