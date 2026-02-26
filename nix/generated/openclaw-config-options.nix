@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev a690b62391cb6c3f5d4b507b828aa97bb96c3171. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 133f14c0af924944aeb78845deec8359db2b77f6. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -7,6 +7,67 @@ in
 {
   "$schema" = lib.mkOption {
     type = t.nullOr (t.str);
+    default = null;
+  };
+
+  acp = lib.mkOption {
+    type = t.nullOr (t.submodule { options = {
+    allowedAgents = lib.mkOption {
+      type = t.nullOr (t.listOf (t.str));
+      default = null;
+    };
+    backend = lib.mkOption {
+      type = t.nullOr (t.str);
+      default = null;
+    };
+    defaultAgent = lib.mkOption {
+      type = t.nullOr (t.str);
+      default = null;
+    };
+    dispatch = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      enabled = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+    enabled = lib.mkOption {
+      type = t.nullOr (t.bool);
+      default = null;
+    };
+    maxConcurrentSessions = lib.mkOption {
+      type = t.nullOr (t.int);
+      default = null;
+    };
+    runtime = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      installCommand = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      ttlMinutes = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+    stream = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      coalesceIdleMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      maxChunkChars = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+  }; });
     default = null;
   };
 
@@ -3137,6 +3198,10 @@ in
             type = t.nullOr (t.bool);
             default = null;
           };
+          spawnAcpSessions = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           spawnSubagentSessions = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -3909,6 +3974,10 @@ in
       threadBindings = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        spawnAcpSessions = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
         };
