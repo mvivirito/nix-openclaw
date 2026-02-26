@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev cf311978ea6117256659f29c902a7a441f63def3. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 4380d74d4985467aad1ce93306b4f5598794dac4. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -4397,11 +4397,75 @@ in
           default = null;
         };
         serviceAccount = lib.mkOption {
-          type = t.nullOr (t.oneOf [ (t.str) (t.attrsOf (t.anything)) ]);
+          type = t.nullOr (t.oneOf [ (t.str) (t.attrsOf (t.anything)) (t.oneOf [ (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "env" ];
+          };
+        }; }) (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "file" ];
+          };
+        }; }) (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "exec" ];
+          };
+        }; }) ]) ]);
           default = null;
         };
         serviceAccountFile = lib.mkOption {
           type = t.nullOr (t.str);
+          default = null;
+        };
+        serviceAccountRef = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "env" ];
+          };
+        }; }) (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "file" ];
+          };
+        }; }) (t.submodule { options = {
+          id = lib.mkOption {
+            type = t.str;
+          };
+          provider = lib.mkOption {
+            type = t.str;
+          };
+          source = lib.mkOption {
+            type = t.enum [ "exec" ];
+          };
+        }; }) ]);
           default = null;
         };
         streamMode = lib.mkOption {
@@ -4589,11 +4653,75 @@ in
         default = null;
       };
       serviceAccount = lib.mkOption {
-        type = t.nullOr (t.oneOf [ (t.str) (t.attrsOf (t.anything)) ]);
+        type = t.nullOr (t.oneOf [ (t.str) (t.attrsOf (t.anything)) (t.oneOf [ (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "env" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "file" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "exec" ];
+        };
+      }; }) ]) ]);
         default = null;
       };
       serviceAccountFile = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+      serviceAccountRef = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "env" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "file" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "exec" ];
+        };
+      }; }) ]);
         default = null;
       };
       streamMode = lib.mkOption {
@@ -7273,22 +7401,27 @@ in
         webhookHost = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
+          description = "Local bind host for the webhook listener. Defaults to 127.0.0.1; keep loopback unless you intentionally expose direct ingress.";
         };
         webhookPath = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
+          description = "Local webhook route path served by the gateway listener. Defaults to /telegram-webhook.";
         };
         webhookPort = lib.mkOption {
           type = t.nullOr (t.int);
           default = null;
+          description = "Local bind port for the webhook listener. Defaults to 8787; set to 0 to let the OS assign an ephemeral port.";
         };
         webhookSecret = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
+          description = "Secret token sent to Telegram during webhook registration and verified on inbound webhook requests. Telegram returns this value for verification; this is not the gateway auth token and not the bot token.";
         };
         webhookUrl = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
+          description = "Public HTTPS webhook URL registered with Telegram for inbound updates. This must be internet-reachable and requires channels.telegram.webhookSecret.";
         };
       }; }));
         default = null;
@@ -7649,22 +7782,27 @@ in
       webhookHost = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
+        description = "Local bind host for the webhook listener. Defaults to 127.0.0.1; keep loopback unless you intentionally expose direct ingress.";
       };
       webhookPath = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
+        description = "Local webhook route path served by the gateway listener. Defaults to /telegram-webhook.";
       };
       webhookPort = lib.mkOption {
         type = t.nullOr (t.int);
         default = null;
+        description = "Local bind port for the webhook listener. Defaults to 8787; set to 0 to let the OS assign an ephemeral port.";
       };
       webhookSecret = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
+        description = "Secret token sent to Telegram during webhook registration and verified on inbound webhook requests. Telegram returns this value for verification; this is not the gateway auth token and not the bot token.";
       };
       webhookUrl = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
+        description = "Public HTTPS webhook URL registered with Telegram for inbound updates. This must be internet-reachable and requires channels.telegram.webhookSecret.";
       };
     }; });
       default = null;
@@ -9681,7 +9819,37 @@ in
         default = null;
       };
       apiKey = lib.mkOption {
-        type = t.nullOr (t.str);
+        type = t.nullOr (t.oneOf [ (t.str) (t.oneOf [ (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "env" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "file" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "exec" ];
+        };
+      }; }) ]) ]);
         default = null;
       };
       auth = lib.mkOption {
@@ -9921,6 +10089,124 @@ in
       type = t.nullOr (t.submodule { options = {
       memory = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+  }; });
+    default = null;
+  };
+
+  secrets = lib.mkOption {
+    type = t.nullOr (t.submodule { options = {
+    defaults = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      env = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      exec = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      file = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+    providers = lib.mkOption {
+      type = t.nullOr (t.attrsOf (t.oneOf [ (t.submodule { options = {
+      allowlist = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+      source = lib.mkOption {
+        type = t.enum [ "env" ];
+      };
+    }; }) (t.submodule { options = {
+      maxBytes = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      mode = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.enum [ "singleValue" ]) (t.enum [ "json" ]) ]);
+        default = null;
+      };
+      path = lib.mkOption {
+        type = t.str;
+      };
+      source = lib.mkOption {
+        type = t.enum [ "file" ];
+      };
+      timeoutMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+    }; }) (t.submodule { options = {
+      allowInsecurePath = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      allowSymlinkCommand = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      args = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+      command = lib.mkOption {
+        type = t.str;
+      };
+      env = lib.mkOption {
+        type = t.nullOr (t.attrsOf (t.str));
+        default = null;
+      };
+      jsonOnly = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+      maxOutputBytes = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      noOutputTimeoutMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      passEnv = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+      source = lib.mkOption {
+        type = t.enum [ "exec" ];
+      };
+      timeoutMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      trustedDirs = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+    }; }) ]));
+      default = null;
+    };
+    resolution = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      maxBatchBytes = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      maxProviderConcurrency = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      maxRefsPerProvider = lib.mkOption {
+        type = t.nullOr (t.int);
         default = null;
       };
     }; });
@@ -10189,7 +10475,37 @@ in
     entries = lib.mkOption {
       type = t.nullOr (t.attrsOf (t.submodule { options = {
       apiKey = lib.mkOption {
-        type = t.nullOr (t.str);
+        type = t.nullOr (t.oneOf [ (t.str) (t.oneOf [ (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "env" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "file" ];
+        };
+      }; }) (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        provider = lib.mkOption {
+          type = t.str;
+        };
+        source = lib.mkOption {
+          type = t.enum [ "exec" ];
+        };
+      }; }) ]) ]);
         default = null;
       };
       config = lib.mkOption {
