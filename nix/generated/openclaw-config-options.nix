@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 410ba918fb7b60b9a777b20589d9494683ae9456. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 35976da7a0785cda4002f7379395a6515d12f0c1. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -367,6 +367,10 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+        directPolicy = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.enum [ "allow" ]) (t.enum [ "block" ]) ]);
           default = null;
         };
         every = lib.mkOption {
@@ -1067,6 +1071,10 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+        directPolicy = lib.mkOption {
+          type = t.nullOr (t.oneOf [ (t.enum [ "allow" ]) (t.enum [ "block" ]) ]);
           default = null;
         };
         every = lib.mkOption {
