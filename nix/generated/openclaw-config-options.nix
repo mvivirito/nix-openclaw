@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev d6eefe2e75191fb83bd6905b37310b954399ee1d. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev ac03803d12b823afe12743042a75aebd62a6c8b7. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -9815,7 +9815,7 @@ in
     providers = lib.mkOption {
       type = t.nullOr (t.attrsOf (t.submodule { options = {
       api = lib.mkOption {
-        type = t.nullOr (t.oneOf [ (t.enum [ "openai-completions" ]) (t.enum [ "openai-responses" ]) (t.enum [ "anthropic-messages" ]) (t.enum [ "google-generative-ai" ]) (t.enum [ "github-copilot" ]) (t.enum [ "bedrock-converse-stream" ]) (t.enum [ "ollama" ]) ]);
+        type = t.nullOr (t.oneOf [ (t.enum [ "openai-completions" ]) (t.enum [ "openai-responses" ]) (t.enum [ "openai-codex-responses" ]) (t.enum [ "anthropic-messages" ]) (t.enum [ "google-generative-ai" ]) (t.enum [ "github-copilot" ]) (t.enum [ "bedrock-converse-stream" ]) (t.enum [ "ollama" ]) ]);
         default = null;
       };
       apiKey = lib.mkOption {
@@ -9870,7 +9870,7 @@ in
       models = lib.mkOption {
         type = t.listOf (t.submodule { options = {
         api = lib.mkOption {
-          type = t.nullOr (t.oneOf [ (t.enum [ "openai-completions" ]) (t.enum [ "openai-responses" ]) (t.enum [ "anthropic-messages" ]) (t.enum [ "google-generative-ai" ]) (t.enum [ "github-copilot" ]) (t.enum [ "bedrock-converse-stream" ]) (t.enum [ "ollama" ]) ]);
+          type = t.nullOr (t.oneOf [ (t.enum [ "openai-completions" ]) (t.enum [ "openai-responses" ]) (t.enum [ "openai-codex-responses" ]) (t.enum [ "anthropic-messages" ]) (t.enum [ "google-generative-ai" ]) (t.enum [ "github-copilot" ]) (t.enum [ "bedrock-converse-stream" ]) (t.enum [ "ollama" ]) ]);
           default = null;
         };
         compat = lib.mkOption {
