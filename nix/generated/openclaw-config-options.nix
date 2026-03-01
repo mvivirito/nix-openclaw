@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 62a7683ce6ff9f38e5c7b3075c1d978de3e153c9. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 98e30dc2a3b673a053fa2f2638c5508405f2dfb0. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -8313,6 +8313,23 @@ in
     };
     maxConcurrentRuns = lib.mkOption {
       type = t.nullOr (t.int);
+      default = null;
+    };
+    retry = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      backoffMs = lib.mkOption {
+        type = t.nullOr (t.listOf (t.int));
+        default = null;
+      };
+      maxAttempts = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      retryOn = lib.mkOption {
+        type = t.nullOr (t.listOf (t.enum [ "rate_limit" "network" "timeout" "server_error" ]));
+        default = null;
+      };
+    }; });
       default = null;
     };
     runLog = lib.mkOption {
