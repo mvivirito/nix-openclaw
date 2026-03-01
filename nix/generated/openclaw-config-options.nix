@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 98e30dc2a3b673a053fa2f2638c5508405f2dfb0. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 4637b90c070f2f0d36ddac2bd3dbd59a3e5f40bd. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -8309,6 +8309,23 @@ in
     type = t.nullOr (t.submodule { options = {
     enabled = lib.mkOption {
       type = t.nullOr (t.bool);
+      default = null;
+    };
+    failureAlert = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      after = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      cooldownMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      enabled = lib.mkOption {
+        type = t.nullOr (t.bool);
+        default = null;
+      };
+    }; });
       default = null;
     };
     maxConcurrentRuns = lib.mkOption {
