@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev b99666a47aef81b62b0ad8ff37ad3fd42f8c3df7. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 40fda40aa7d821148cf15b83cf492e51a54a325c. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -313,6 +313,10 @@ in
             type = t.nullOr (t.bool);
             default = null;
           };
+          forceFlushTranscriptBytes = lib.mkOption {
+            type = t.nullOr (t.oneOf [ (t.int) (t.str) ]);
+            default = null;
+          };
           prompt = lib.mkOption {
             type = t.nullOr (t.str);
             default = null;
@@ -480,6 +484,10 @@ in
           default = null;
         };
         includeReasoning = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        lightContext = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
         };
@@ -1184,6 +1192,10 @@ in
           default = null;
         };
         includeReasoning = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        lightContext = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
         };
@@ -2722,6 +2734,10 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        ackReactionScope = lib.mkOption {
+          type = t.nullOr (t.enum [ "group-mentions" "group-all" "direct" "all" "off" "none" ]);
+          default = null;
+        };
         actions = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           channelInfo = lib.mkOption {
@@ -2938,6 +2954,23 @@ in
         };
         enabled = lib.mkOption {
           type = t.nullOr (t.bool);
+          default = null;
+        };
+        eventQueue = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          listenerTimeout = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+          maxConcurrency = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+          maxQueueSize = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+        }; });
           default = null;
         };
         execApprovals = lib.mkOption {
@@ -3505,6 +3538,10 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      ackReactionScope = lib.mkOption {
+        type = t.nullOr (t.enum [ "group-mentions" "group-all" "direct" "all" "off" "none" ]);
+        default = null;
+      };
       actions = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         channelInfo = lib.mkOption {
@@ -3721,6 +3758,23 @@ in
       };
       enabled = lib.mkOption {
         type = t.nullOr (t.bool);
+        default = null;
+      };
+      eventQueue = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        listenerTimeout = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+        maxConcurrency = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+        maxQueueSize = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+      }; });
         default = null;
       };
       execApprovals = lib.mkOption {
@@ -8486,6 +8540,10 @@ in
     }; });
       default = null;
     };
+    stuckSessionWarnMs = lib.mkOption {
+      type = t.nullOr (t.int);
+      default = null;
+    };
   }; });
     default = null;
   };
@@ -9462,7 +9520,7 @@ in
       default = null;
     };
     ackReactionScope = lib.mkOption {
-      type = t.nullOr (t.enum [ "group-mentions" "group-all" "direct" "all" ]);
+      type = t.nullOr (t.enum [ "group-mentions" "group-all" "direct" "all" "off" "none" ]);
       default = null;
     };
     groupChat = lib.mkOption {
