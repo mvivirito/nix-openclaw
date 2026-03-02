@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 2a8ac974e18e57889ac71cb943ae2df8a4202428. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev bc0288bcfbced168427a3078791cb8c9c01e3899. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -12054,6 +12054,36 @@ in
       type = t.nullOr (t.submodule { options = {
       visibility = lib.mkOption {
         type = t.nullOr (t.enum [ "self" "tree" "agent" "all" ]);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+    sessions_spawn = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      attachments = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        maxFileBytes = lib.mkOption {
+          type = t.nullOr (t.number);
+          default = null;
+        };
+        maxFiles = lib.mkOption {
+          type = t.nullOr (t.number);
+          default = null;
+        };
+        maxTotalBytes = lib.mkOption {
+          type = t.nullOr (t.number);
+          default = null;
+        };
+        retainOnSessionKeep = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+      }; });
         default = null;
       };
     }; });
