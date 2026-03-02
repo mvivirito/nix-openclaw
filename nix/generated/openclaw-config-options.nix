@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 3c0ec76e8ede43744d63af20f9a6e43b01873971. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 11adaa15a8a64946b0e9f63ebc3a7d0f10fab97b. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -7370,6 +7370,10 @@ in
               type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
               default = null;
             };
+            disableAudioPreflight = lib.mkOption {
+              type = t.nullOr (t.bool);
+              default = null;
+            };
             enabled = lib.mkOption {
               type = t.nullOr (t.bool);
               default = null;
@@ -7448,6 +7452,10 @@ in
             type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
             default = null;
           };
+          disableAudioPreflight = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           enabled = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -7506,6 +7514,10 @@ in
             type = t.nullOr (t.attrsOf (t.submodule { options = {
             allowFrom = lib.mkOption {
               type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
+              default = null;
+            };
+            disableAudioPreflight = lib.mkOption {
+              type = t.nullOr (t.bool);
               default = null;
             };
             enabled = lib.mkOption {
@@ -7847,6 +7859,10 @@ in
             type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
             default = null;
           };
+          disableAudioPreflight = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           enabled = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -7925,6 +7941,10 @@ in
           type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
           default = null;
         };
+        disableAudioPreflight = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
         enabled = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
@@ -7983,6 +8003,10 @@ in
           type = t.nullOr (t.attrsOf (t.submodule { options = {
           allowFrom = lib.mkOption {
             type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
+            default = null;
+          };
+          disableAudioPreflight = lib.mkOption {
+            type = t.nullOr (t.bool);
             default = null;
           };
           enabled = lib.mkOption {
@@ -11388,6 +11412,14 @@ in
         }; });
           default = null;
         };
+        echoFormat = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        echoTranscript = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
         enabled = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
@@ -11589,6 +11621,14 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+        echoFormat = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        echoTranscript = lib.mkOption {
+          type = t.nullOr (t.bool);
           default = null;
         };
         enabled = lib.mkOption {
@@ -11874,6 +11914,14 @@ in
             default = null;
           };
         }; });
+          default = null;
+        };
+        echoFormat = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        echoTranscript = lib.mkOption {
+          type = t.nullOr (t.bool);
           default = null;
         };
         enabled = lib.mkOption {
