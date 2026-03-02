@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev c6e5026edfb7f6dcd2d68073b21df73914380c60. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 1443bb9a84ebd1e5078bd59957b265f62c9dd537. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -2192,6 +2192,10 @@ in
     type = t.nullOr (t.submodule { options = {
     attachOnly = lib.mkOption {
       type = t.nullOr (t.bool);
+      default = null;
+    };
+    cdpPortRangeStart = lib.mkOption {
+      type = t.nullOr (t.int);
       default = null;
     };
     cdpUrl = lib.mkOption {
