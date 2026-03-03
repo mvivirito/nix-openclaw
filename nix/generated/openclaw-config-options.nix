@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev b0bcea03dbf4743cf67bac55c1d793d86b0684df. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev e4b4486a96a969aa0fbd477ff999e214ab83feb5. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -143,6 +143,10 @@ in
       };
       bootstrapMaxChars = lib.mkOption {
         type = t.nullOr (t.int);
+        default = null;
+      };
+      bootstrapPromptTruncationWarning = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.enum [ "off" ]) (t.enum [ "once" ]) (t.enum [ "always" ]) ]);
         default = null;
       };
       bootstrapTotalMaxChars = lib.mkOption {
@@ -2989,7 +2993,7 @@ in
           default = null;
         };
         allowBots = lib.mkOption {
-          type = t.nullOr (t.bool);
+          type = t.nullOr (t.oneOf [ (t.bool) (t.enum [ "mentions" ]) ]);
           default = null;
         };
         allowFrom = lib.mkOption {
@@ -3950,7 +3954,7 @@ in
         default = null;
       };
       allowBots = lib.mkOption {
-        type = t.nullOr (t.bool);
+        type = t.nullOr (t.oneOf [ (t.bool) (t.enum [ "mentions" ]) ]);
         default = null;
       };
       allowFrom = lib.mkOption {
