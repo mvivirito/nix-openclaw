@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev bf7061092a1e507a22e9fabe5b7f3554dbe0acc6. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 05446d6b6bc318147bca058f5f72a6f13937ffea. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -2996,6 +2996,35 @@ in
           type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
           default = null;
         };
+        autoPresence = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          degradedText = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          enabled = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          exhaustedText = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          healthyText = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          intervalMs = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+          minUpdateIntervalMs = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         blockStreaming = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
@@ -3926,6 +3955,35 @@ in
       };
       allowFrom = lib.mkOption {
         type = t.nullOr (t.listOf (t.oneOf [ (t.str) (t.number) ]));
+        default = null;
+      };
+      autoPresence = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        degradedText = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        exhaustedText = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        healthyText = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        intervalMs = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+        minUpdateIntervalMs = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+      }; });
         default = null;
       };
       blockStreaming = lib.mkOption {
