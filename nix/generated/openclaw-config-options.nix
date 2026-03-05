@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev f014e255dfb000620b02177cb374f34e717e9291. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev aad372e15fb95f5b1e914465f16e302a5d724799. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -338,6 +338,19 @@ in
         };
         mode = lib.mkOption {
           type = t.nullOr (t.oneOf [ (t.enum [ "default" ]) (t.enum [ "safeguard" ]) ]);
+          default = null;
+        };
+        qualityGuard = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          enabled = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          maxRetries = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+        }; });
           default = null;
         };
         reserveTokens = lib.mkOption {
