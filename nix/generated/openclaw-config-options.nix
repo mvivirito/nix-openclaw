@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 60849f33357882e00722216cc1a555f12337ac78. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 6a705a37f2cf856a6237eac430210859914f67d7. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -1612,6 +1612,39 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      runtime = lib.mkOption {
+        type = t.nullOr (t.oneOf [ (t.submodule { options = {
+        type = lib.mkOption {
+          type = t.enum [ "embedded" ];
+        };
+      }; }) (t.submodule { options = {
+        acp = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          agent = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          backend = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          cwd = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          mode = lib.mkOption {
+            type = t.nullOr (t.enum [ "persistent" "oneshot" ]);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
+        type = lib.mkOption {
+          type = t.enum [ "acp" ];
+        };
+      }; }) ]);
+        default = null;
+      };
       sandbox = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         browser = lib.mkOption {
@@ -2196,7 +2229,7 @@ in
   };
 
   bindings = lib.mkOption {
-    type = t.nullOr (t.listOf (t.submodule { options = {
+    type = t.nullOr (t.listOf (t.oneOf [ (t.submodule { options = {
     agentId = lib.mkOption {
       type = t.str;
     };
@@ -2238,7 +2271,77 @@ in
       };
     }; };
     };
-  }; }));
+    type = lib.mkOption {
+      type = t.nullOr (t.enum [ "route" ]);
+      default = null;
+    };
+  }; }) (t.submodule { options = {
+    acp = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      backend = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      cwd = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      label = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      mode = lib.mkOption {
+        type = t.nullOr (t.enum [ "persistent" "oneshot" ]);
+        default = null;
+      };
+    }; });
+      default = null;
+    };
+    agentId = lib.mkOption {
+      type = t.str;
+    };
+    comment = lib.mkOption {
+      type = t.nullOr (t.str);
+      default = null;
+    };
+    match = lib.mkOption {
+      type = t.submodule { options = {
+      accountId = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      channel = lib.mkOption {
+        type = t.str;
+      };
+      guildId = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      peer = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        id = lib.mkOption {
+          type = t.str;
+        };
+        kind = lib.mkOption {
+          type = t.oneOf [ (t.enum [ "direct" ]) (t.enum [ "group" ]) (t.enum [ "channel" ]) (t.enum [ "dm" ]) ];
+        };
+      }; });
+        default = null;
+      };
+      roles = lib.mkOption {
+        type = t.nullOr (t.listOf (t.str));
+        default = null;
+      };
+      teamId = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+    }; };
+    };
+    type = lib.mkOption {
+      type = t.enum [ "acp" ];
+    };
+  }; }) ]));
     default = null;
   };
 
@@ -3816,6 +3919,10 @@ in
               }; }) ]) ]);
                 default = null;
               };
+              baseUrl = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
               model = lib.mkOption {
                 type = t.nullOr (t.str);
                 default = null;
@@ -4779,6 +4886,10 @@ in
                 type = t.enum [ "exec" ];
               };
             }; }) ]) ]);
+              default = null;
+            };
+            baseUrl = lib.mkOption {
+              type = t.nullOr (t.str);
               default = null;
             };
             model = lib.mkOption {
@@ -11337,6 +11448,10 @@ in
             type = t.enum [ "exec" ];
           };
         }; }) ]) ]);
+          default = null;
+        };
+        baseUrl = lib.mkOption {
+          type = t.nullOr (t.str);
           default = null;
         };
         model = lib.mkOption {
