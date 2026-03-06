@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev aad372e15fb95f5b1e914465f16e302a5d724799. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev b39ca7eccb76bd4ddca73cdcb79d67bc784d1bf0. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -3475,6 +3475,15 @@ in
           type = t.nullOr (t.int);
           default = null;
         };
+        inboundWorker = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          runTimeoutMs = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         intents = lib.mkOption {
           type = t.nullOr (t.submodule { options = {
           guildMembers = lib.mkOption {
@@ -4442,6 +4451,15 @@ in
       };
       historyLimit = lib.mkOption {
         type = t.nullOr (t.int);
+        default = null;
+      };
+      inboundWorker = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        runTimeoutMs = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+      }; });
         default = null;
       };
       intents = lib.mkOption {
@@ -8175,6 +8193,10 @@ in
             type = t.nullOr (t.bool);
             default = null;
           };
+          poll = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
           reactions = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
@@ -8652,6 +8674,31 @@ in
           type = t.nullOr (t.int);
           default = null;
         };
+        threadBindings = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          enabled = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          idleHours = lib.mkOption {
+            type = t.nullOr (t.number);
+            default = null;
+          };
+          maxAgeHours = lib.mkOption {
+            type = t.nullOr (t.number);
+            default = null;
+          };
+          spawnAcpSessions = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          spawnSubagentSessions = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         timeoutSeconds = lib.mkOption {
           type = t.nullOr (t.int);
           default = null;
@@ -8725,6 +8772,10 @@ in
       actions = lib.mkOption {
         type = t.nullOr (t.submodule { options = {
         deleteMessage = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        poll = lib.mkOption {
           type = t.nullOr (t.bool);
           default = null;
         };
@@ -9207,6 +9258,31 @@ in
       };
       textChunkLimit = lib.mkOption {
         type = t.nullOr (t.int);
+        default = null;
+      };
+      threadBindings = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        idleHours = lib.mkOption {
+          type = t.nullOr (t.number);
+          default = null;
+        };
+        maxAgeHours = lib.mkOption {
+          type = t.nullOr (t.number);
+          default = null;
+        };
+        spawnAcpSessions = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        spawnSubagentSessions = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+      }; });
         default = null;
       };
       timeoutSeconds = lib.mkOption {
@@ -11791,6 +11867,15 @@ in
       };
       enabled = lib.mkOption {
         type = t.nullOr (t.bool);
+        default = null;
+      };
+      hooks = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        allowPromptInjection = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+      }; });
         default = null;
       };
     }; }));
