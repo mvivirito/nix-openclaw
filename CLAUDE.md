@@ -7,7 +7,7 @@ Personal fork of [openclaw/nix-openclaw](https://github.com/openclaw/nix-opencla
 The upstream `nix-openclaw` repo has an hourly CI auto-updater ("Yolo Update Pins") that keeps the OpenClaw source pin current. When the upstream updater falls behind or breaks, this fork lets us:
 
 1. Pin to any OpenClaw release independently
-2. Apply build fixes not yet landed upstream (e.g. rolldown hoisting)
+2. Apply build fixes not yet landed upstream
 3. Run the auto-update CI on our own schedule
 
 ## Repository Structure
@@ -71,9 +71,7 @@ nix build .#openclaw-gateway
 
 ## Fork-Specific Changes
 
-### Rolldown hoisting fix (gateway-build.sh)
-
-OpenClaw v2026.2.22+ uses `rolldown` for A2UI bundling. The upstream `bundle-a2ui.sh` script falls back to `pnpm dlx rolldown` when rolldown isn't on PATH, which fails in the nix sandbox (no network access). Our fix creates a wrapper script in `node_modules/.bin/rolldown` that points to the rolldown CLI found in the pnpm store as a transitive dependency of `tsdown`.
+This fork is now synced with upstream. The rolldown hoisting fix that was previously fork-specific has been adopted upstream using a simpler PATH-based approach (prepending `node_modules/.pnpm/node_modules/.bin` to `$PATH`).
 
 ## Consumer: nix-config
 
