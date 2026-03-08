@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 7ab49a7fb7f7e97e2f2ce79ebe080e95a11f1414. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 76a028a50acb6a3cbced4c26f570f46d2032fa9c. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -8715,6 +8715,11 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        webhookCertPath = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+          description = "Path to the self-signed certificate (PEM) to upload to Telegram during webhook registration. Required for self-signed certs (direct IP or no domain).";
+        };
         webhookHost = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -9300,6 +9305,11 @@ in
       tokenFile = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
+      };
+      webhookCertPath = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+        description = "Path to the self-signed certificate (PEM) to upload to Telegram during webhook registration. Required for self-signed certs (direct IP or no domain).";
       };
       webhookHost = lib.mkOption {
         type = t.nullOr (t.str);
