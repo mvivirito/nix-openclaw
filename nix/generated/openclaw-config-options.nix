@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 76a028a50acb6a3cbced4c26f570f46d2032fa9c. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 3596a46868caba5f8ffdde0e41c3b1cdad44b4d9. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -3116,6 +3116,15 @@ in
           type = t.nullOr (t.str);
           default = null;
         };
+        agentComponents = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          enabled = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
         allowBots = lib.mkOption {
           type = t.nullOr (t.oneOf [ (t.bool) (t.enum [ "mentions" ]) ]);
           default = null;
@@ -4088,6 +4097,15 @@ in
       };
       activityUrl = lib.mkOption {
         type = t.nullOr (t.str);
+        default = null;
+      };
+      agentComponents = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+      }; });
         default = null;
       };
       allowBots = lib.mkOption {
