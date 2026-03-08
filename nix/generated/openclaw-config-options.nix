@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev d4ab731746a5078d0d525c8f6ab45b579ee713c8. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev d3111fbbcbc4b985b6b3a931a12124798c813602. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -338,6 +338,10 @@ in
         };
         mode = lib.mkOption {
           type = t.nullOr (t.oneOf [ (t.enum [ "default" ]) (t.enum [ "safeguard" ]) ]);
+          default = null;
+        };
+        model = lib.mkOption {
+          type = t.nullOr (t.str);
           default = null;
         };
         postCompactionSections = lib.mkOption {
@@ -2444,6 +2448,10 @@ in
         default = null;
       };
     }; }));
+      default = null;
+    };
+    relayBindHost = lib.mkOption {
+      type = t.nullOr (t.oneOf [ (t.str) (t.str) ]);
       default = null;
     };
     remoteCdpHandshakeTimeoutMs = lib.mkOption {
