@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev f6d0712f508b1f926ad6fc42f7d07b1a60e62730. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 51bae75120485d305b0bac00d59a2d80280590c2. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -11851,6 +11851,10 @@ in
             default = null;
           };
           requiresMistralToolIds = lib.mkOption {
+            type = t.nullOr (t.bool);
+            default = null;
+          };
+          requiresOpenAiAnthropicToolPayload = lib.mkOption {
             type = t.nullOr (t.bool);
             default = null;
           };
