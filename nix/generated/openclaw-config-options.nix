@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev e6897c800bbf74d730d130ac0197a72cc9562e4d. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 0b34671de3be4d581e6660f96cbeaf9af1dcb165. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -10664,6 +10664,29 @@ in
     };
     port = lib.mkOption {
       type = t.nullOr (t.int);
+      default = null;
+    };
+    push = lib.mkOption {
+      type = t.nullOr (t.submodule { options = {
+      apns = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        relay = lib.mkOption {
+          type = t.nullOr (t.submodule { options = {
+          baseUrl = lib.mkOption {
+            type = t.nullOr (t.str);
+            default = null;
+          };
+          timeoutMs = lib.mkOption {
+            type = t.nullOr (t.int);
+            default = null;
+          };
+        }; });
+          default = null;
+        };
+      }; });
+        default = null;
+      };
+    }; });
       default = null;
     };
     reload = lib.mkOption {
