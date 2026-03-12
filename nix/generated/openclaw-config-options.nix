@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 50cc375c110d9d9d49b02af9ee0079753a6e9cb6. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 4da617e1783af7c79affb8ce39093c96333cd454. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -346,6 +346,10 @@ in
         };
         postCompactionSections = lib.mkOption {
           type = t.nullOr (t.listOf (t.str));
+          default = null;
+        };
+        postIndexSync = lib.mkOption {
+          type = t.nullOr (t.enum [ "off" "async" "await" ]);
           default = null;
         };
         qualityGuard = lib.mkOption {
@@ -864,6 +868,10 @@ in
             };
             deltaMessages = lib.mkOption {
               type = t.nullOr (t.int);
+              default = null;
+            };
+            postCompactionForce = lib.mkOption {
+              type = t.nullOr (t.bool);
               default = null;
             };
           }; });
@@ -1643,6 +1651,10 @@ in
             };
             deltaMessages = lib.mkOption {
               type = t.nullOr (t.int);
+              default = null;
+            };
+            postCompactionForce = lib.mkOption {
+              type = t.nullOr (t.bool);
               default = null;
             };
           }; });
