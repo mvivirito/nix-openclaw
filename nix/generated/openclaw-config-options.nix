@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev c4265a5f166f99b19b6bccaf445463640411c4f2. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev a493f01a9033a6ad87af8fb4c7f0efc9b891540b. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -5144,6 +5144,10 @@ in
           type = t.nullOr (t.bool);
           default = null;
         };
+        appPrincipal = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
         audience = lib.mkOption {
           type = t.nullOr (t.str);
           default = null;
@@ -5403,6 +5407,10 @@ in
       };
       allowBots = lib.mkOption {
         type = t.nullOr (t.bool);
+        default = null;
+      };
+      appPrincipal = lib.mkOption {
+        type = t.nullOr (t.str);
         default = null;
       };
       audience = lib.mkOption {
