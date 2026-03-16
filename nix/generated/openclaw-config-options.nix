@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 79a67a5e089800f5329b2651bd5a6445d226f789. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 43c156e43b060870ce5d0157f5a28e050914bcea. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -12810,6 +12810,18 @@ in
         type = t.nullOr (t.str);
         default = null;
       };
+      marketplaceName = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      marketplacePlugin = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
+      marketplaceSource = lib.mkOption {
+        type = t.nullOr (t.str);
+        default = null;
+      };
       resolvedAt = lib.mkOption {
         type = t.nullOr (t.str);
         default = null;
@@ -12831,7 +12843,7 @@ in
         default = null;
       };
       source = lib.mkOption {
-        type = t.oneOf [ (t.enum [ "npm" ]) (t.enum [ "archive" ]) (t.enum [ "path" ]) ];
+        type = t.oneOf [ (t.oneOf [ (t.enum [ "npm" ]) (t.enum [ "archive" ]) (t.enum [ "path" ]) ]) (t.enum [ "marketplace" ]) ];
       };
       sourcePath = lib.mkOption {
         type = t.nullOr (t.str);
