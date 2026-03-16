@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 3e8bc9f16ac31e593dbc9655a02d72fe27d02826. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 79a67a5e089800f5329b2651bd5a6445d226f789. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -2804,14 +2804,10 @@ in
         type = t.str;
       };
       driver = lib.mkOption {
-        type = t.nullOr (t.oneOf [ (t.enum [ "openclaw" ]) (t.enum [ "clawd" ]) (t.enum [ "extension" ]) (t.enum [ "existing-session" ]) ]);
+        type = t.nullOr (t.oneOf [ (t.enum [ "openclaw" ]) (t.enum [ "clawd" ]) (t.enum [ "existing-session" ]) ]);
         default = null;
       };
     }; }));
-      default = null;
-    };
-    relayBindHost = lib.mkOption {
-      type = t.nullOr (t.oneOf [ (t.str) (t.str) ]);
       default = null;
     };
     remoteCdpHandshakeTimeoutMs = lib.mkOption {
@@ -11305,6 +11301,10 @@ in
     reload = lib.mkOption {
       type = t.nullOr (t.submodule { options = {
       debounceMs = lib.mkOption {
+        type = t.nullOr (t.int);
+        default = null;
+      };
+      deferralTimeoutMs = lib.mkOption {
         type = t.nullOr (t.int);
         default = null;
       };
