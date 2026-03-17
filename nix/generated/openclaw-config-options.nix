@@ -1,4 +1,4 @@
-# Generated from upstream OpenClaw schema at rev 04985dab2315eaaae720ecc58f853a67d0e3f057. DO NOT EDIT.
+# Generated from upstream OpenClaw schema at rev 662031a88e5eac1f31eeaf87293241204e6645ef. DO NOT EDIT.
 # Generator: nix/scripts/generate-config-options.ts
 { lib }:
 let
@@ -4280,6 +4280,51 @@ in
               type = t.nullOr (t.int);
               default = null;
             };
+            microsoft = lib.mkOption {
+              type = t.nullOr (t.submodule { options = {
+              enabled = lib.mkOption {
+                type = t.nullOr (t.bool);
+                default = null;
+              };
+              lang = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              outputFormat = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              pitch = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              proxy = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              rate = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              saveSubtitles = lib.mkOption {
+                type = t.nullOr (t.bool);
+                default = null;
+              };
+              timeoutMs = lib.mkOption {
+                type = t.nullOr (t.int);
+                default = null;
+              };
+              voice = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+              volume = lib.mkOption {
+                type = t.nullOr (t.str);
+                default = null;
+              };
+            }; });
+              default = null;
+            };
             mode = lib.mkOption {
               type = t.nullOr (t.enum [ "final" "all" ]);
               default = null;
@@ -4385,7 +4430,7 @@ in
               default = null;
             };
             provider = lib.mkOption {
-              type = t.nullOr (t.enum [ "elevenlabs" "openai" "edge" ]);
+              type = t.nullOr (t.str);
               default = null;
             };
             summaryModel = lib.mkOption {
@@ -5288,6 +5333,51 @@ in
             type = t.nullOr (t.int);
             default = null;
           };
+          microsoft = lib.mkOption {
+            type = t.nullOr (t.submodule { options = {
+            enabled = lib.mkOption {
+              type = t.nullOr (t.bool);
+              default = null;
+            };
+            lang = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            outputFormat = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            pitch = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            proxy = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            rate = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            saveSubtitles = lib.mkOption {
+              type = t.nullOr (t.bool);
+              default = null;
+            };
+            timeoutMs = lib.mkOption {
+              type = t.nullOr (t.int);
+              default = null;
+            };
+            voice = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+            volume = lib.mkOption {
+              type = t.nullOr (t.str);
+              default = null;
+            };
+          }; });
+            default = null;
+          };
           mode = lib.mkOption {
             type = t.nullOr (t.enum [ "final" "all" ]);
             default = null;
@@ -5393,7 +5483,7 @@ in
             default = null;
           };
           provider = lib.mkOption {
-            type = t.nullOr (t.enum [ "elevenlabs" "openai" "edge" ]);
+            type = t.nullOr (t.str);
             default = null;
           };
           summaryModel = lib.mkOption {
@@ -12373,6 +12463,51 @@ in
         type = t.nullOr (t.int);
         default = null;
       };
+      microsoft = lib.mkOption {
+        type = t.nullOr (t.submodule { options = {
+        enabled = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        lang = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        outputFormat = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        pitch = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        proxy = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        rate = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        saveSubtitles = lib.mkOption {
+          type = t.nullOr (t.bool);
+          default = null;
+        };
+        timeoutMs = lib.mkOption {
+          type = t.nullOr (t.int);
+          default = null;
+        };
+        voice = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+        volume = lib.mkOption {
+          type = t.nullOr (t.str);
+          default = null;
+        };
+      }; });
+        default = null;
+      };
       mode = lib.mkOption {
         type = t.nullOr (t.enum [ "final" "all" ]);
         default = null;
@@ -12478,7 +12613,7 @@ in
         default = null;
       };
       provider = lib.mkOption {
-        type = t.nullOr (t.enum [ "elevenlabs" "openai" "edge" ]);
+        type = t.nullOr (t.str);
         default = null;
       };
       summaryModel = lib.mkOption {
